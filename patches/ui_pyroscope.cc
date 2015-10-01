@@ -499,7 +499,7 @@ bool ui_pyroscope_download_list_redraw(Window* window, display::Canvas* canvas, 
 	const char* progress[3][PROGRESS_STEPS] = {
 		{},
 		{"⠀ ", "⠁ ", "⠉ ", "⠋ ", "⠛ ", "⠟ ", "⠿ ", "⡿ ", "⣿ "},
-		{"⠀ ", "▁ ", "▂ ", "▃ ", "▄ ", "▅ ", "▆ ", "▇ ", "█ "},
+		{"  ", "▁ ", "▂ ", "▃ ", "▄ ", "▅ ", "▆ ", "▇ ", "█ "},
 	};
 	unsigned int progress_style = std::min<unsigned int>(rpc::call_command_value("ui.style.progress"), 2);
 	#define YING_YANG_STEPS 11
@@ -720,7 +720,7 @@ void network_history_format(std::string& buf, char kind, uint32_t* data) {
 	buf = buffer;
 
 	if (max_rate > 102) {
-		const char* meter[] = {"⠀", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"};
+		const char* meter[] = {" ", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"};
 		uint32_t base = rpc::call_command_value("network.history.auto_scale") ? min_rate : 0;
 		for (int i = 1; i <= samples; ++i) {
 			uint32_t idx = (network_history_count - i) % network_history_depth;
